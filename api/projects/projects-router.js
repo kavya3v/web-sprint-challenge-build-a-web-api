@@ -13,7 +13,7 @@ const {validateProjectId, validateProjectBody}=require('../middleware');
 router.get('/',async (req,res)=>{
     try {
         const projectsList=await projectsModel.get();
-          res.status(200).json(projectsList);
+        res.status(200).json({projectsList});
     } catch (err) {
         res.status(500).json('Oops something went wrong!')
     }

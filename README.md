@@ -128,7 +128,24 @@ There are two possible ways to submit this project to Canvas. Lambda Staff will 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+As a runtime environment Noje.js  is used to execute  Javascript code outside 
+the browser and the express framework helps to make web app and api services on node js. The Routing feature of Express handles the request for each URL.
+Data could be passed and handled via web API and it uses REST way in the web.
+
 1. Understand and explain the use of Middleware.
+Middleware is like the switches for a framework that when ON will help extend the functionality and bring in addition specific functionalities.This adds modularity to the code, and common tasks like authentication/logging/security can be obtained from middleware instead of code from scratch.
+
 1. The basic principles of the REST architectural style.
+
+REST architecture considers- 
+-it is stateless (state is managed only within the application)
+-everything as a resource ! (say the database is a resource!)
+-each resource is accessed via URI
+-communications are made over HTTP
+-resources are managed/updated via HTTP methods(.get/.delete/.put etc)
+
 1. Understand and explain the use of Express Routers.
+Express Routers handles each of the URL requests methods, it helps clean and organize the API code. Router itself is a middleware that takes req and res.
+
 1. Describe tooling used to manually test the correctness of an API.
+API testing is made thru POSTMAN - where HTTP requests are made jus like the web. JSON data could be added to the body for put/post requests.
