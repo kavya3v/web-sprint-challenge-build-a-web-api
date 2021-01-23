@@ -45,10 +45,10 @@ router.put('/:id',validateProjectId,validateProjectBody, async(req,res)=>{
 router.delete('/:id',validateProjectId,async(req,res)=>{
     try {
         const deletedP=await projectsModel.remove(req.params.id)
-        if(deletedP > 0){
-            res.status(200).json(deletedP)
+        if(deletedP === 1){
+            res.status(204).json(deletedP)
         }else {
-            res.status(400).json({message: 'unable to delete the project '})
+            res.status(500).json({message: 'unable to delete the project '})
         }
     } catch (err) {
         res.status(500).json({message: err.message})

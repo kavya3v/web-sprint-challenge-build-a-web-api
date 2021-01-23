@@ -30,10 +30,9 @@ router.get('/:id', validateActionId, async(req,res)=>{
 router.post('/',validateActionBody,async(req,res)=>{
   try {
     const postedAction= await actionsModel.insert(req.body)
-    if(postedAction){
       res.status(201).json(postedAction)
-  }else res.status(400).json({message : "Unable to create action"});
-  } catch (err) {
+  }
+   catch (err) {
     res.status(500).json({message: "Oops something went wrong!"})
   }
 })
@@ -52,11 +51,11 @@ router.delete('/:id',validateActionId, async(req,res,next)=>{
 try {
   const deleted=await actionsModel.remove(req.params.id)
   console.log('deleted=',deleted);
-  if(deleted > 0){
-    res.status(200).json(deleted);
+  if(deleted === 1){
+    res.status(204).json(deleted);
   }else{
     // invoking the common error handler pass arg to next!!
-      next({code:400, message:'Unable to remove this action...'})
+      next({code:500, message:'Unable to remove this action...'})
   }
 } catch (err) {
   res.status(500).json({message: err.message})
