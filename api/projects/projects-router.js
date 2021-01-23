@@ -9,7 +9,7 @@ const {validateProjectId, validateProjectBody}=require('../middleware');
 // router.get('/',(req,res)=>{
 //     res.status(200).json({message:'hello from my projects router!'})
 // })
-router.get('/api/welcome',async (req,res)=>{
+router.get('/welcome',async (req,res)=>{
     try {
         const welcomeMsg=await process.env.WELCOME;
         //stretch to include env variable
