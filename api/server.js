@@ -22,7 +22,7 @@ server.get('/',(req,res)=>{
 
 //common error handler function (yay finally learnt to take 4 arg)
 function errorHandler(error,req,res,next){
-    const code=error.status || error.statusCode || 500;
+    const code= error.status || error.statusCode || 500;
     res.status(code).json(error.message);
     }
     //error handler middleware
