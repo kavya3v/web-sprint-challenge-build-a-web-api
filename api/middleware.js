@@ -13,7 +13,7 @@ function validateActionId(req,res,next){
            next();
        }else{
             // invoking the common error handler pass arg to next!!
-            next({code:404, message:'sorry given action Id is not found!'})
+            next({statusCode:404, message:'sorry given action Id is not found!'})
        }
    })
    .catch(err=>{

@@ -9,13 +9,22 @@ const {validateProjectId, validateProjectBody}=require('../middleware');
 // router.get('/',(req,res)=>{
 //     res.status(200).json({message:'hello from my projects router!'})
 // })
+router.get('/api/welcome',async (req,res)=>{
+    try {
+        const welcomeMsg=await process.env.WELCOME;
+        //stretch to include env variable
+        res.status(200).json(welcomeMsg);
+    } catch (err) {
+        res.status(500).json('Oops something went wrong!')
+    }
+  })
 
 router.get('/',async (req,res)=>{
     try {
         const projectsList=await projectsModel.get();
         const welcomeMsg=process.env.WELCOME;
         //stretch to include env variable
-        res.status(200).json({projects: projectsList , welcome: welcomeMsg});
+        res.status(200).json(projectsList);
     } catch (err) {
         res.status(500).json('Oops something went wrong!')
     }
