@@ -42,8 +42,8 @@ function validateProjectId(req,res,next){
 function validateActionBody(req,res,next){
   const actionBody=req.body;
   
-  if (!actionBody.description || !actionBody.notes){
-      res.status(400).json({message: "Please provide description and notes property for the action"})
+  if (!actionBody.description || !actionBody.notes || !actionBody.project_id){
+      res.status(400).json({message: "Please provide description and notes and project id property for the action"})
   }else {
       next();
   }
