@@ -1,4 +1,5 @@
 const express = require('express');
+const cors= require('cors');
 const server = express();
 const helmet=require('helmet');
 const morgan=require('morgan');
@@ -11,6 +12,7 @@ const actionsRouter=require('../api/actions/actions-router');
 server.use(express.json());
 server.use(helmet());
 server.use(morgan('dev'));
+server.use(cors());
 
 //branch to respective router for the url
 server.use('/api/actions',actionsRouter);
