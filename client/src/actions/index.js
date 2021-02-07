@@ -19,10 +19,11 @@ export const FETCH_ACTIONS_START = "FETCH_ACTIONS_START"
 export const FETCH_ACTIONS_SUCCESS = "FETCH_ACTIONS_SUCCESS"
 export const FETCH_ACTIONS_FAILURE = "FETCH_ACTIONS_FAILURE"
 
+const baseURL="https://kavya-projectactions.herokuapp.com"
 //getprojects
 export const fetchProjects=()=>(dispatch)=>{
     dispatch({type:FETCH_PROJECTS_START})
-    axios.get('http://localhost:4000/api/projects')
+    axios.get(`${baseURL}/api/projects`)
     .then(res=>{
         console.log('res=',res.data)
         dispatch({type:FETCH_PROJECTS_SUCCESS,payload:res.data})
@@ -36,7 +37,7 @@ export const fetchProjects=()=>(dispatch)=>{
 //add project
 export const addProject=(newProject)=>(dispatch)=>{
     dispatch({type:ADD_PROJECTS_START})
-    axios.post('http://localhost:4000/api/projects',newProject)
+    axios.post(`${baseURL}/api/projects`,newProject)
     .then(res=>{
         console.log('res in add=',res.data)
         dispatch({type:ADD_PROJECTS_SUCCESS,payload:res.data})
@@ -50,7 +51,7 @@ export const addProject=(newProject)=>(dispatch)=>{
 //update projects
 export const updateProjects=(updateProject,projID)=>(dispatch)=>{
     dispatch({type:UPDATE_PROJECTS_START})
-    axios.put(`http://localhost:4000/api/projects/${projID}`,updateProject)
+    axios.put(`${baseURL}/api/projects/${projID}`,updateProject)
     .then(res=>{
         console.log('res in update=',res.data)
         dispatch({type:UPDATE_PROJECTS_SUCCESS,payload:res.data})
@@ -61,11 +62,9 @@ export const updateProjects=(updateProject,projID)=>(dispatch)=>{
     })
 }
 //delete projects
-
-//update projects
 export const deleteProject=(projID)=>(dispatch)=>{
     dispatch({type:DELETE_PROJECTS_START})
-    axios.delete(`http://localhost:4000/api/projects/${projID}`)
+    axios.delete(`${baseURL}/api/projects/${projID}`)
     .then(res=>{
         console.log('res in del=',res.data)
         dispatch({type:DELETE_PROJECTS_SUCCESS,payload:res.data})
@@ -75,10 +74,10 @@ export const deleteProject=(projID)=>(dispatch)=>{
         dispatch({type:DELETE_PROJECTS_FAILURE,payload:err.data})
     })
 }
-
+//actions
 export const fetchActions=()=>(dispatch)=>{
     dispatch({type:FETCH_ACTIONS_START})
-    axios.get('http://localhost:4000/api/actions')
+    axios.get(`${baseURL}/api/actions`)
     .then(res=>{
         console.log('res=',res.data)
         dispatch({type:FETCH_ACTIONS_SUCCESS,payload:res.data})
